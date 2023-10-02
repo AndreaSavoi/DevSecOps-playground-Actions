@@ -58,6 +58,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: horusec-report-sq
+      
+      - name: create an issue
+        uses: dacbd/create-issue-action@main
+        with:
+          token: ${{ github.token }}
+          title: HORUSEC ISSUE
+          body: link to the report ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           
       #- name: Print the json result
       #  id: stampalog
@@ -91,25 +98,25 @@ jobs:
       #    json: ${{ steps.stampalog.outputs }}
       #- run: echo ${{ steps.table.outputs.table }}
 
-      - name: Create Issue From File
-        id: horusec-issue-sq
-        uses: peter-evans/create-issue-from-file@v4
-        with:
-          title: Horusec output SQ
-          content-filepath: horusec-output_sq.json
-          labels: |
-            report
-            automated issue
+#      - name: Create Issue From File
+ #       id: horusec-issue-sq
+  #      uses: peter-evans/create-issue-from-file@v4
+   #     with:
+    #      title: Horusec output SQ
+     #     content-filepath: horusec-output_sq.json
+      #    labels: |
+       ##     report
+         #   automated issue
 
-      - name: Create Issue From File
-        id: horusec-issue-json
-        uses: peter-evans/create-issue-from-file@v4
-        with:
-          title: Horusec output Json
-          content-filepath: horusec-output_json.json
-          labels: |
-            report
-            automated issue
+#      - name: Create Issue From File
+ #       id: horusec-issue-json
+  #      uses: peter-evans/create-issue-from-file@v4
+   #     with:
+    #      title: Horusec output Json
+     #     content-filepath: horusec-output_json.json
+      #    labels: |
+       #     report
+        #    automated issue
     
 
     
